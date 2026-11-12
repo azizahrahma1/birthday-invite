@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Ulang Tahun</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <main>
+        <section class="opening">
+            <div class="envelope" id="envelope" role="button" tabindex="0"
+            aria-label="Buka undangan">
+            <div class="flap"></div>
+            <div class="seal">♡</div>
+             </div>
+        </section>
+        
+        <section class="welcome" id="welcome" hidden>
+            <div class="invitation-card">
+                <div class="subtitle">YOU'RE INVITED!</div>
+                <h1>Selamat datang di pesta ulang tahunku</h1>
+                <p>Senang sekali kamu bisa hadir di sini ♡</p>
+            </div>
+        </section>
+
+        <section class="profile">
+            <p class="eyebrow">A special day for</p>
+            <h2>Happy Birthday!</h2>
+            
+            <div class="profile-container">
+                <img src="profile-photo.jpeg" alt="Foto Profil" class="profile-photo">
+                <img src="profile-frame.png" alt="Bingkai Profil" class="profile-frame">
+            </div>
+
+            <h3>A-na</h3>
+            <p>Merayakan usia <strong>18 tahun</strong></p>
+            <p>Terima kasih sudah ikut merayakan hari spesialku ♡</p>
+        </section>
+
+        <section class="countdown">
+            <p class="eyebrow">The party starts in</p>
+            <h2>Counting down</h2>
+
+            <div class="timer">
+                <div><span id="days">00</span><small>Hari</small></div>
+                <div><span id="hours">00</span><small>Jam</small></div>
+                <div><span id="minutes">00</span><small>Menit</small></div>
+                <div><span id="seconds">00</span><small>Detik</small></div>
+            </div>
+        </section>
+
+        <section class="event">
+            <p class="eyebrow">Save the date</p>
+            <h2>Detail Acara</h2>
+            
+            <p><strong>Hari & tanggal</strong><br>Senin, 20 Desember 2026</p>
+            <p><strong>Waktu</strong><br>16.00 WIB</p>
+            <p><strong>Lokasi</strong><br>Jakarta Selatan</p>
+            <p><strong>Dress code</strong><br>Pastel pink atau cream</p>
+            
+            <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=Jakarta+Selatan"
+            target="_blank"
+            rel="noopener"
+            >
+            Lihat Lokasi
+            </a>
+        </section>
+
+        <section class="gallery">
+            <p class="eyebrow">Little memories</p>
+            
+            <div class="photo-grid">
+                <div class="photo-placeholder"><img src="foto2.jpeg" alt=""></div>
+                <div class="photo-placeholder"><img src="foto3.jpeg" alt=""></div>
+            </div>
+        </section>
+
+        <section class="rsvp">
+            <p class="eyebrow">Can you make it?</p>
+            <h2>Konfirmasi Kehadiran</h2>
+            <p>Pilih jawabanmu, ya ♡</p>
+
+            <button class="rsvp-button" data-response="Hadir">
+                Aku akan hadir
+            </button>
+
+            <button class="rsvp-button" data-response="Tidak hadir">
+                Maaf, belum bisa hadir
+            </button>
+
+            <p id="rsvp-message" aria-live="polite"></p>
+        </section>
+
+        <section class="wishes">
+            <p class="eyebrow">Leave a little love</p>
+            <h2>Kirim Ucapan</h2>
+
+            <form id="wish-form">
+                <input
+                id="wish-name"
+                type="text"
+                placeholder="Namamu"
+                required
+            >
+            
+            <textarea
+            id="wish-text"
+            placeholder="Tulis doa atau ucapan..."
+            required
+            ></textarea>
+
+            <button type="submit">Kirim Ucapan</button>
+            </form>
+            
+            <div id="wish-list" aria-live="polite"></div>
+        </section>
+
+        <section class="closing">
+            <p class="eyebrow">With love</p>
+            <h2>Terima kasih sudah merayakan bersamaku</h2>
+            <p>Kehadiran dan doamu berarti banyak ♡</p>
+        </section>
+
+        <audio id="bg-music" src="song.mp3" loop></audio>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
