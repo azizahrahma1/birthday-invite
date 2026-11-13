@@ -1,9 +1,11 @@
+/* --- RESET & PENGATURAN DASAR --- */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
   display: grid;
   place-items: center;
@@ -11,8 +13,21 @@ body {
   color: #70495a;
   font-family: Georgia, serif;
   text-align: center;
+  padding: 20px 10px;
 }
 
+/* Membungkus seluruh undangan agar berbentuk kartu rapi di laptop maupun HP */
+main {
+  width: 100%;
+  max-width: 420px;
+  background: #fffaf9;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(112, 73, 90, 0.15);
+  overflow: hidden;
+  position: relative;
+}
+
+/* --- AMPLOP PEMBUKA --- */
 .opening {
   position: fixed;
   inset: 0;
@@ -35,6 +50,7 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 12px;
+  font-weight: 600;
 }
 
 .envelope {
@@ -76,6 +92,7 @@ body {
   font-size: 24px;
 }
 
+/* --- TOMBOL --- */
 button {
   padding: 13px 24px;
   border: 0;
@@ -83,58 +100,118 @@ button {
   background: #7c4258;
   color: white;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* --- SECTION UMUM --- */
 .welcome,
-.profile {
+.countdown,
+.event,
+.gallery,
+.rsvp,
+.wishes,
+.closing {
   padding: 30px 20px;
-  max-width: 420px;
-  margin: 20px auto;
-  border-radius: 24px;
-  background: #fffaf9;
+  margin: 0 auto;
+  border-bottom: 1px dashed #f0d1dc;
+}
+
+.closing {
+  border-bottom: none;
+  background: linear-gradient(135deg, #f8e2eb, #eee8f7);
 }
 
 .welcome h2,
+.countdown h2,
+.event h2,
+.gallery h2,
+.rsvp h2,
+.wishes h2,
 .profile h2 {
   color: #7c4258;
-  font-size: 28px;
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
-.portrait {
-  width: 130px;
+/* --- BAGIAN PROFIL (DIPERBAIKI AGAR NAMA TIDAK MENIMPA FOTO) --- */
+.profile {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background: #fffaf9 url("birthday-card.jpeg") center / cover no-repeat;
+  text-align: center;
+  border-bottom: 1px dashed #f0d1dc;
+}
+
+.profile > * {
+  position: relative;
+  z-index: 1;
+}
+
+.profile-container {
+  position: relative;
+  width: 160px;
+  height: 180px;
+  margin: 15px auto 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photo {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
   height: 130px;
-  margin: 20px auto;
-  display: grid;
-  place-items: center;
-  border: 5px solid white;
+  object-fit: cover;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f3ccd8, #eee5f5);
-  box-shadow: 0 4px 18px #70495a25;
-  color: #8d6676;
+  z-index: 1;
+}
+
+.profile-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 3;
 }
 
 .profile h3 {
   color: #7c4258;
-  font-size: 21px;
+  font-size: 22px;
+  margin-top: 10px;
+  z-index: 4;
 }
 
+.profile p {
+  color: #806875;
+  margin-top: 6px;
+  z-index: 4;
+}
+
+/* --- COUNTDOWN TIMER --- */
 .countdown {
-  max-width: 420px;
-  margin: 20px auto;
-  padding: 28px 16px;
-  border-radius: 24px;
   background: #eee8f7;
-}
-
-.countdown h2 {
-  color: #7c4258;
-  font-size: 26px;
 }
 
 .timer {
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-top: 15px;
 }
 
 .timer div {
@@ -157,22 +234,15 @@ button {
   font-size: 10px;
 }
 
+/* --- DETAIL ACARA & MAP --- */
 .event {
-  max-width: 420px;
-  margin: 20px auto;
-  padding: 28px 22px;
-  border-radius: 24px;
   background: #fffaf9;
-}
-
-.event h2 {
-  color: #7c4258;
-  font-size: 26px;
 }
 
 .event p {
   color: #806875;
   line-height: 1.6;
+  margin-bottom: 12px;
 }
 
 .event strong {
@@ -190,17 +260,9 @@ button {
   font-size: 13px;
 }
 
+/* --- GALERI FOTO --- */
 .gallery {
-  max-width: 420px;
-  margin: 20px auto;
-  padding: 28px 20px;
-  border-radius: 24px;
   background: #fffaf9;
-}
-
-.gallery h2 {
-  color: #7c4258;
-  font-size: 26px;
 }
 
 .photo-grid {
@@ -208,11 +270,12 @@ button {
   gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 15px;
 }
 
 .photo-placeholder {
-  width: 220px;
-  height: 280px;
+  width: 160px;
+  height: 210px;
   overflow: hidden;
   border-radius: 12px;
   display: grid;
@@ -229,21 +292,14 @@ button {
   display: block;
 }
 
+/* --- RSVP --- */
 .rsvp {
-  max-width: 420px;
-  margin: 20px auto;
-  padding: 28px 20px;
-  border-radius: 24px;
   background: #f8e8ed;
-}
-
-.rsvp h2 {
-  color: #7c4258;
-  font-size: 26px;
 }
 
 .rsvp p {
   color: #806875;
+  margin-bottom: 15px;
 }
 
 .rsvp-button {
@@ -262,17 +318,9 @@ button {
   font-size: 14px;
 }
 
+/* --- WISHES (KOLOM UCAPAN) --- */
 .wishes {
-  max-width: 420px;
-  margin: 20px auto;
-  padding: 28px 20px;
-  border-radius: 24px;
   background: #fffaf9;
-}
-
-.wishes h2 {
-  color: #7c4258;
-  font-size: 26px;
 }
 
 .wishes input,
@@ -290,10 +338,6 @@ button {
   resize: vertical;
 }
 
-.wishes button {
-  margin-top: 8px;
-}
-
 .wish-card {
   margin-top: 12px;
   padding: 12px;
@@ -306,16 +350,8 @@ button {
   margin-bottom: 0;
 }
 
-.closing {
-  max-width: 420px;
-  margin: 20px auto;
-  padding: 38px 22px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #f8e2eb, #eee8f7);
-}
-
+/* --- CLOSING --- */
 .closing h2 {
-  color: #7c4258;
   font: italic 27px Georgia, serif;
 }
 
@@ -324,29 +360,7 @@ button {
   line-height: 1.6;
 }
 
-.celebration span {
-  display: inline-block;
-  margin: 8px;
-  font-size: 25px;
-  animation: float 2s ease-in-out infinite;
-}
-
-.celebration span:nth-child(2) {
-  animation-delay: 0.3s;
-}
-
-.celebration span:nth-child(3) {
-  animation-delay: 0.6s;
-}
-
-.celebration span:nth-child(4) {
-  animation-delay: 0.9s;
-}
-
-.welcome:not([hidden]) {
-  animation: welcome-in 0.7s ease-out both;
-}
-
+/* --- ANIMASI & EFEK --- */
 @keyframes float {
   50% {
     transform: translateY(-8px);
@@ -362,6 +376,10 @@ button {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.welcome:not([hidden]) {
+  animation: welcome-in 0.7s ease-out both;
 }
 
 .party-burst {
@@ -389,104 +407,10 @@ button {
   }
 }
 
-.profile {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: min(100%, 420px);
-  aspect-ratio: 3 / 5;
-  min-height: 0;
-  padding: 80px 50px;
-  border: 0;
-  border-radius: 0;
-  background: #fffaf9 url("birthday-card.jpeg") center / 100% 100% no-repeat;
-  box-shadow: none;
-  text-align: center;
-}
-
-.profile > * {
-  position: relative;
-  z-index: 1;
-}
-
-img.portrait-photo {
-  display: block;
-  width: 155px;
-  height: 230px;
-  margin: 24px auto;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.profile-container {
-  position: relative;
-  width: 160px;
-  height: 200px;
-  margin: 30px auto 15px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-photo {
-  position: absolute;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 130px;
-  object-fit: cover;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.profile-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.profile h2, 
-.profile h3, 
-.profile p {
-  position: relative;
-  z-index: 4;
-  margin-top: 15px;
-}
-
 .invitation-card {
-  background-image: url('background-ribbon.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 24px;
-  padding: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-button, .btn {
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-button:hover, .btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.invitation-card, .card {
-  transition: all 0.3s ease;
-}
-
-.invitation-card:hover, .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  padding: 30px 20px;
 }
